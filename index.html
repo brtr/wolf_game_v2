@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wolf Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://npmcdn.com/moralis@latest/dist/moralis.js"></script>
+    <script type="module" src="./src/main.js"></script>
+  </head>
+
+  <body>
+    <h1 class="mx-3">Wolf Game</h1>
+    <div class="loginBtn">
+      <span id="address"></span>
+      <button id="btn-login">Metamask Login</button>
+      <button id="btn-logout" class="float-right">Logout</button>
+    </div>
+    <div class="mx-3">
+      <input id="mintCount" type="number" placeholder="mint count" />
+      <button id="btn-mint">Mint</button>
+    </div>
+    <div class="mx-3">
+      <input id="stakeTokenId" type="number" placeholder="tokenId" />
+      <button id="btn-stake">Stake</button>
+    </div>
+    <div class="mx-3">
+      <input id="unstakeTokenId" type="number" placeholder="tokenId" />
+      <button id="btn-unstake">Unstake</button>
+    </div>
+    <div class="mx-3">
+      <input id="claimTokenId" type="number" placeholder="tokenId" />
+      <button id="btn-claim">Claim</button>
+    </div>
+    <div id="loader">
+      <div class="inner one"></div>
+      <div class="inner two"></div>
+      <div class="inner three"></div>
+    </div>
+  </body>
+</html>
+
+
+<style>
+  body { position: relative; margin: 3rem 5rem; }
+  .mx-3 { margin: 1rem; }
+  .float-right { float: right; }
+  div input, div button { font-size: 1.5rem; }
+
+  .loginBtn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.5rem;
+  }
+
+  #loader {
+    position: absolute;
+    top: calc(50% - 32px);
+    left: calc(50% - 32px);
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    perspective: 800px;
+  }
+
+  .inner {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .inner.one {
+    left: 0%;
+    top: 0%;
+    animation: rotate-one 1s linear infinite;
+    border-bottom: 3px solid #5d5d63;
+  }
+
+  .inner.two {
+    right: 0%;
+    top: 0%;
+    animation: rotate-two 1s linear infinite;
+    border-right: 3px solid #5d5d63;
+  }
+
+  .inner.three {
+    right: 0%;
+    bottom: 0%;
+    animation: rotate-three 1s linear infinite;
+    border-top: 3px solid #5d5d63;
+  }
+
+  @keyframes rotate-one {
+    0% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotate-two {
+    0% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotate-three {
+    0% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+    }
+    100% {
+      transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+    }
+  }
+</style>
